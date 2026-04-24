@@ -27,6 +27,7 @@ function sendData() {
 
   fetch("https://bajaj-z10v.onrender.com/bfhl", {
     method: "POST",
+    mode:"cors",
     headers: {
       "Content-Type": "application/json"
     },
