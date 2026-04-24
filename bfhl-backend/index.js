@@ -4,15 +4,21 @@ const bfhlRoute = require("./routes/bfhl");
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST"]
+}));
+
 app.use(express.json());
 
 app.use("/bfhl", bfhlRoute);
 
 app.get("/", (req, res) => {
-    res.send("BFHL API Running 🚀");
+    res.send("BFHL API Running ");
 });
 
-app.listen(3009, () => {
-    console.log("Server running on port 3009");
+const PORT = process.env.PORT || 3009;
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });
