@@ -25,7 +25,7 @@ function sendData() {
     .map(x => x.trim())
     .filter(x => x.length > 0);
 
-  fetch("http://localhost:3009/bfhl", {
+  fetch("https://bajaj-z10v.onrender.com/bfhl", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -51,15 +51,15 @@ function sendData() {
       });
     }
 
-    // ❌ INVALID ENTRIES
+   
     if (result.invalid_entries && result.invalid_entries.length > 0) {
-      outputText += "\n❌ Invalid Entries:\n";
+      outputText += "\n Invalid Entries:\n";
       result.invalid_entries.forEach(e => {
         outputText += `- ${e}\n`;
       });
     }
 
-    // 🔁 DUPLICATES
+  
     if (result.duplicate_edges && result.duplicate_edges.length > 0) {
       outputText += "\n🔁 Duplicate Edges:\n";
       result.duplicate_edges.forEach(e => {
@@ -67,7 +67,7 @@ function sendData() {
       });
     }
 
-    // 📊 SUMMARY
+   
     if (result.summary) {
       outputText += "\n📊 Summary:\n";
       outputText += `Trees: ${result.summary.total_trees}\n`;
@@ -79,6 +79,6 @@ function sendData() {
   })
   .catch(err => {
     document.getElementById("output").innerText =
-      "❌ Error connecting to API";
-  });
+      "Error connecting to API";
+  })
 }
